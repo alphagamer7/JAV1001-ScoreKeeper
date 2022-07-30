@@ -12,8 +12,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView team1ScoreText;
-    TextView team2ScoreText;
+    TextView team1ScoreTxt;
+    TextView team2ScoreTxt;
 
     Button btnIncreaseTeam1Score;
     Button btnIncreaseTeam2Score;
@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
         // --------------------------------------------------
         // Set all references for xml elements
         // --------------------------------------------------
-        team1ScoreText = findViewById(R.id.team1Score);
-        team2ScoreText = findViewById(R.id.team2Score);
+        team1ScoreTxt = findViewById(R.id.team1Score);
+        team2ScoreTxt = findViewById(R.id.team2Score);
 
         btnIncreaseTeam1Score = findViewById(R.id.increaseTeam1Score);
         btnIncreaseTeam2Score = findViewById(R.id.increaseTeam2Score);
@@ -71,19 +71,19 @@ public class MainActivity extends AppCompatActivity {
         // Increase and Decrease buttons for team 1 and 2 scores
         btnIncreaseTeam1Score.setOnClickListener(view -> {
             team1Score += team1ScoreChangeBy;
-            team1ScoreText.setText("Score 1: " + team1Score);
+            team1ScoreTxt.setText("Score 1: " + team1Score);
         });
         btnIncreaseTeam2Score.setOnClickListener(view -> {
             team2Score += team2ScoreChangeBy;
-            team2ScoreText.setText("Score 2: " + team2Score);
+            team2ScoreTxt.setText("Score 2: " + team2Score);
         });
         btnDecreaseTeam1Score.setOnClickListener(view -> {
             team1Score -= team1ScoreChangeBy;
-            team1ScoreText.setText("Score 1: " + team1Score);
+            team1ScoreTxt.setText("Score 1: " + team1Score);
         });
         btnDecreaseTeam2Score.setOnClickListener(view -> {
             team2Score -= team2ScoreChangeBy;
-            team2ScoreText.setText("Score 2: " + team2Score);
+            team2ScoreTxt.setText("Score 2: " + team2Score);
         });
     }
 
