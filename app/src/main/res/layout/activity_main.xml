@@ -26,22 +26,20 @@
                 style="@style/Theme.ScoreKeeper.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
                 android:layout_span="1"
+                android:layout_marginRight="10dp"
                 android:gravity="center"
-                android:text="Team 1"
-                android:textColor="#050505" />
+                android:text="Team 1" />
 
             <TextView
                 android:id="@+id/team2Name"
                 style="@style/Theme.ScoreKeeper.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_span="1"
+                android:layout_marginLeft="10dp"
                 android:gravity="center"
-                android:text="Team 2"
-                android:textColor="#000000" />
+                android:text="Team 2" />
         </TableRow>
         <!-- END Team Names section -->
 
@@ -89,18 +87,16 @@
                 android:id="@+id/increaseTeam1Score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
                 android:layout_span="1"
-                android:backgroundTint="#750C0C"
+                android:layout_marginRight="10dp"
                 android:text="Increase 1" />
 
             <Button
                 android:id="@+id/increaseTeam2Score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_span="1"
-                android:backgroundTint="#750C0C"
+                android:layout_marginLeft="10dp"
                 android:text="Increase 2" />
         </TableRow>
         <!-- END Increase Buttons section -->
@@ -118,18 +114,16 @@
                 android:id="@+id/decreaseTeam1Score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
                 android:layout_span="1"
-                android:backgroundTint="#750C0C"
+                android:layout_marginRight="10dp"
                 android:text="Decrease 1" />
 
             <Button
                 android:id="@+id/decreaseTeam2Score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_span="1"
-                android:backgroundTint="#750C0C"
+                android:layout_marginLeft="10dp"
                 android:text="Decrease 2" />
         </TableRow>
         <!-- END Decrease Buttons section -->
@@ -215,8 +209,7 @@
                     style="@style/Theme.ScoreKeeper.Switch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Night Mode"
-                    android:textColor="#131313" />
+                    android:text="Night Mode" />
 
             </LinearLayout>
 
