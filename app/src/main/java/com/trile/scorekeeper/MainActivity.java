@@ -2,33 +2,15 @@ package com.trile.scorekeeper;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.appcompat.widget.SwitchCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView team1ScoreTxt;
-    TextView team2ScoreTxt;
-
-    Button btnIncreaseTeam1Score;
-    Button btnIncreaseTeam2Score;
-    Button btnDecreaseTeam1Score;
-    Button btnDecreaseTeam2Score;
-
-    RadioGroup team1ScoreRadioGroup;
-    RadioGroup team2ScoreRadioGroup;
-
-    int team1Score = 0; // team 1 score to show on UI
-    int team2Score = 0; // team 2 score to show on UI
-    int team1ScoreChangeBy = 1; // change by value for team 1 score
-    int team2ScoreChangeBy = 1; // change by value for team 2 score
-
-    SwitchCompat switchNightMode;
+    FragmentManager fragmentManager = getSupportFragmentManager();
+    FragmentTransaction fragmentTransaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,103 +22,33 @@ public class MainActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_main);
 
-        // --------------------------------------------------
-        // Set all references for xml elements
-        // --------------------------------------------------
-        team1ScoreTxt = findViewById(R.id.team1Score);
-        team2ScoreTxt = findViewById(R.id.team2Score);
+        // set default view
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout_main,ContentFragment.class,null );
+        fragmentTransaction.commit();
 
-        btnIncreaseTeam1Score = findViewById(R.id.increaseTeam1Score);
-        btnIncreaseTeam2Score = findViewById(R.id.increaseTeam2Score);
-        btnDecreaseTeam1Score = findViewById(R.id.decreaseTeam1Score);
-        btnDecreaseTeam2Score = findViewById(R.id.decreaseTeam2Score);
+        // Phone is in potrait mode
+        if(findViewById(R.id.layout_default) !=null){
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frame_layout_main,ContentFragment.class,null );
+            fragmentTransaction.commit();
+        }else{
+            // Phone is in landspace mode // for testing we hide the night mode since its not placed well
+            fragmentTransaction = fragmentManager.beginTransaction();
+            //fragmentTransaction.hide(NightModeFragment.class)
+            fragmentTransaction.commit();
 
-        team1ScoreRadioGroup = findViewById(R.id.team1ScoreRadioGroup);
-        team2ScoreRadioGroup = findViewById(R.id.team2ScoreRadioGroup);
-
-        switchNightMode = findViewById(R.id.switchNightMode);
-        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
-            switchNightMode.setChecked(true);
         }
-
-        // --------------------------------------------------
-        // Set all listeners for xml elements
-        // --------------------------------------------------
-        setupButtonListeners();
-        setupRadioButtonListeners();
-        setupSwitchNightModeListener();
     }
 
-    private void setupButtonListeners() {
-        // Increase and Decrease buttons for team 1 and 2 scores
-        btnIncreaseTeam1Score.setOnClickListener(view -> {
-            team1Score += team1ScoreChangeBy;
-            team1ScoreTxt.setText("Score 1: " + team1Score);
-        });
-        btnIncreaseTeam2Score.setOnClickListener(view -> {
-            team2Score += team2ScoreChangeBy;
-            team2ScoreTxt.setText("Score 2: " + team2Score);
-        });
-        btnDecreaseTeam1Score.setOnClickListener(view -> {
-            team1Score -= team1ScoreChangeBy;
-            team1ScoreTxt.setText("Score 1: " + team1Score);
-        });
-        btnDecreaseTeam2Score.setOnClickListener(view -> {
-            team2Score -= team2ScoreChangeBy;
-            team2ScoreTxt.setText("Score 2: " + team2Score);
-        });
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout_main,ContentFragment.class,null );
+        fragmentTransaction.commit();
     }
 
-    private void setupRadioButtonListeners() {
-        // Radio Groups for Team 1 change by score
-        team1ScoreRadioGroup.setOnCheckedChangeListener((radioGroup, checkedId) -> {
-            // Set the change by value for team 1 score when user select a radio button
-            switch (checkedId) {
-                case R.id.team1Score1RadioBtn:
-                    team1ScoreChangeBy = 1;
-                    break;
-                case R.id.team1Score50RadioBtn:
-                    team1ScoreChangeBy = 50;
-                    break;
-                case R.id.team1Score99RadioBtn:
-                    team1ScoreChangeBy = 99;
-                    break;
-            }
-        });
-        // Radio Groups for Team 2 change by score
-        team2ScoreRadioGroup.setOnCheckedChangeListener((radioGroup, checkedId) -> {
-            // Set the change by value for team 2 score when user select a radio button
-            switch (checkedId) {
-                case R.id.team2Score1RadioBtn:
-                    team2ScoreChangeBy = 1;
-                    break;
-                case R.id.team2Score50RadioBtn:
-                    team2ScoreChangeBy = 50;
-                    break;
-                case R.id.team2Score99RadioBtn:
-                    team2ScoreChangeBy = 99;
-                    break;
-            }
-        });
-    }
 
-    private void setupSwitchNightModeListener() {
-        switchNightMode.setOnCheckedChangeListener((compoundButton, isChecked) -> {
-            if (isChecked) {
-                ((ScoreKeeperApplication) getApplication()).setIsNightModeEnabled(true);
-                Intent intent = getIntent();
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                finish();
-                startActivityForResult(intent, 0);
-                overridePendingTransition(0,0);
-            } else {
-                ((ScoreKeeperApplication) getApplication()).setIsNightModeEnabled(false);
-                Intent intent = getIntent();
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                finish();
-                startActivityForResult(intent, 0);
-                overridePendingTransition(0,0);
-            }
-        });
-    }
 }

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ContentFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+    <!-- TableLayout that wrap all views in the main layout for better positioning and alignment -->
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        >
+
+        <!-- START Team Names section -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/team1Name"
+                style="@style/Theme.ScoreKeeper.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_span="1"
+                android:gravity="center"
+                android:text="Team 1" />
+
+            <TextView
+                android:id="@+id/team2Name"
+                style="@style/Theme.ScoreKeeper.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_span="1"
+                android:gravity="center"
+                android:text="Team 2" />
+        </TableRow>
+        <!-- END Team Names section -->
+
+        <!-- START Scores section -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+            <TextView
+                android:id="@+id/team1Score"
+                style="@style/Theme.ScoreKeeper.Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_span="1"
+                android:gravity="center"
+                android:text="Score 1: 0" />
+
+            <TextView
+                android:id="@+id/team2Score"
+                style="@style/Theme.ScoreKeeper.Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_span="1"
+                android:gravity="center"
+                android:text="Score 2: 0" />
+        </TableRow>
+        <!-- END Scores section -->
+
+        <!-- START Increase Buttons section -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+            <Button
+                android:id="@+id/increaseTeam1Score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_span="1"
+                android:text="Increase 1" />
+
+            <Button
+                android:id="@+id/increaseTeam2Score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_span="1"
+                android:text="Increase 2" />
+        </TableRow>
+        <!-- END Increase Buttons section -->
+
+        <!-- START Decrease Buttons section -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+            <Button
+                android:id="@+id/decreaseTeam1Score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_span="1"
+                android:text="Decrease 1" />
+
+            <Button
+                android:id="@+id/decreaseTeam2Score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_span="1"
+                android:text="Decrease 2" />
+        </TableRow>
+        <!-- END Decrease Buttons section -->
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal">
+            <!-- START Team 1 Score Selection section -->
+            <RadioGroup
+                android:id="@+id/team1ScoreRadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_span="1"
+                android:checkedButton="@+id/team1Score1RadioBtn">
+
+                <RadioButton
+                    android:id="@+id/team1Score1RadioBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1 Score" />
+
+                <RadioButton
+                    android:id="@+id/team1Score50RadioBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="50 Scores" />
+
+                <RadioButton
+                    android:id="@+id/team1Score99RadioBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="99 Scores" />
+            </RadioGroup>
+            <!-- END Team 1 Score Selection section -->
+
+            <!-- START Team 2 Score Selection section -->
+            <RadioGroup
+                android:id="@+id/team2ScoreRadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_span="1"
+                android:checkedButton="@+id/team2Score1RadioBtn">
+
+                <RadioButton
+                    android:id="@+id/team2Score1RadioBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1 Score" />
+
+                <RadioButton
+                    android:id="@+id/team2Score50RadioBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="50 Scores" />
+
+                <RadioButton
+                    android:id="@+id/team2Score99RadioBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="99 Scores" />
+            </RadioGroup>
+            <!-- END Team 2 Score Selection section -->
+        </TableRow>
+    </TableLayout>
+    </LinearLayout>
+
+</FrameLayout>
